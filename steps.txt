@@ -14,3 +14,13 @@
    14  echo "deb http://pkg.jenkins-ci.org/debian binary/" | sudo tee -a /etc/apt/sources.list.d/jenkins.list
    15  sudo apt-get update
    16  sudo apt-get install jenkins
+   
+   Change Jenkins Port:
+   
+   
+cd /etc/
+   21  cd default/
+   22  ls
+   23  sudo vi jenkins (HTTP_PORT=8080 as HTTP_PORT=8085)
+   27  sudo /etc/init.d/jenkins stop
+   28  sudo /etc/init.d/jenkins start
