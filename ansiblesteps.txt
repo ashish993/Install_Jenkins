@@ -1,0 +1,19 @@
+#Installation
+sudo apt-get install python    #installing python
+sudo apt-get install python-pip       #installing pip
+sudo apt-get install python-boto        #installing boto
+sudo apt-get install ansible
+
+#creating playbook
+In /etc/ansible/roles  -  sudo ansible-galaxy init lab      #creates a role named lab
+In /etc/ansible/roles/lab/tasks/main.yml, give the following command
+---
+ - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+   shell: rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /var/lib/jenkins/workspace/Koc-Devops/* ec2-user@ec2-54-179-131-63.ap-southeast-1.compute.amazonaws.com:/var/www/html/
+
+In /etc/ansible, create a file koc.yml and give the following command,
+---
+ - hosts: localhost
+   connection: local
+   roles:
+    - lab
