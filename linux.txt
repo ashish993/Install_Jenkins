@@ -1,0 +1,14 @@
+build copy linux script
+
+
+rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /var/lib/jenkins/workspace/Koc-Devops/* ec2-user@ec2-54-179-131-63.ap-southeast-1.compute.amazonaws.com:/var/www/html/
+
+ec2-user@ec2-54-179-131-63.ap-southeast-1.compute.amazonaws.com
+
+cd /var/www/html/
+
+cp Koc-CI-CD-1.0-SNAPSHOT.war /var/www/html/
+
+jar xvf Koc-CI-CD-1.0-SNAPSHOT.war
+
+rm -f -r Koc-CI-CD-1.0-SNAPSHOT.war
